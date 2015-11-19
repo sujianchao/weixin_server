@@ -42,7 +42,7 @@ ENV APP_HOME /weixin_maven
 #编译源代码与部署
 RUN cd /weixin_maven && /usr/local/maven/bin/mvn package 
 RUN rm -rf $TOMCAT_HOME/webapps/*
-RUN cd /weixin_maven && cp target/wx_maven.war $TOMCAT_HOME/webapps/ROOT.war
+RUN cd /weixin_maven && cp target/weixin_server.war $TOMCAT_HOME/webapps/ROOT.war
 
 #启动Tomcat与Nginx
 CMD /usr/local/start.sh && tail -F /usr/local/tomcat/logs/catalina.out
