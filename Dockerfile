@@ -37,12 +37,12 @@ RUN git clone https://github.com/sujianchao/weixin_maven.git
 # 定义环境变量	
 ENV TOMCAT_HOME /usr/local/tomcat
 ENV MAVEN_HOME /usr/local/maven
-ENV APP_HOME /wx_maven
+ENV APP_HOME /weixin_maven
 
 #编译源代码与部署
-RUN cd /wx_maven && /usr/local/maven/bin/mvn package 
+RUN cd /weixin_maven && /usr/local/maven/bin/mvn package 
 RUN rm -rf $TOMCAT_HOME/webapps/*
-RUN cd /wx_maven && cp target/wx_server.war $TOMCAT_HOME/webapps/ROOT.war
+RUN cd /weixin_maven && cp target/weixin_maven.war $TOMCAT_HOME/webapps/ROOT.war
 
 #启动Tomcat与Nginx
 CMD /usr/local/start.sh && tail -F /usr/local/tomcat/logs/catalina.out
